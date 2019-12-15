@@ -1,0 +1,38 @@
+.c-input-wrap + .c-input-wrap {
+  @apply mt-8;
+}
+
+.c-text-area {
+  @apply w-full bg-gray-200 rounded border border-transparent transition-colors transition-325 transition-out-sine;
+
+  &:hover {
+    @apply bg-gray-300;
+  }
+
+  &:focus {
+    @apply border-gray-400 bg-gray-300;
+  }
+}
+
+.c-input {
+  @apply h-12 c-text-area;
+}
+
+.c-input[aria-invalid] {
+  @apply border-red-400;
+}
+
+.c-input.c-input--readonly,
+.c-text-area.c-input--readonly {
+  &, &:focus, &:hover {
+    @apply border-gray-200 bg-transparent shadow-none cursor-default;
+
+    resize: none;
+
+    /* stylelint-disable */
+    & + .c-select-caret {
+      display: none !important;
+    }
+    /* stylelint-enable */
+  }
+}

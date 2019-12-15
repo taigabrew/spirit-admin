@@ -1,0 +1,36 @@
+[data-universal-cloak] {
+  display: none;
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
+
+.align-vertical {
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.align-center {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.u-rotate {
+  animation: rotate 1500ms theme('transitionTimingFunction.out-sine') infinite;
+}
+
+.grid {
+  display: grid;
+}
+
+.md\:grid.md\:grid {
+  @media (min-width: theme('screens.md')) {
+    display: grid;
+  }
+}
+
+.outline-icon-stroke-width {
+  stroke-width: 2;
+}
