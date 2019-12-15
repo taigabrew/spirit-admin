@@ -13,7 +13,7 @@
       @input="update"
       @keyup.stop
       v-on="listeners"
-      class="px-3 py-2 min-h-32 c-text-area"
+      class="px-3 py-2 min-h-24 c-text-area"
     ></textarea>
   </InputWrap>
 </template>

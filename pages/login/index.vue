@@ -69,9 +69,16 @@ export default {
     /** Functions */
     const login = async function() {
       try {
-        const { data } = await root.$axios.post('/api/authorization', {
-          user_name: username.value,
-          password_hash: md5(pass.value)
+        const { data } = await root.$axios({
+          method: 'post',
+          url: `${process.env.REST_API_URL}/authorization`,
+          // мheaders: {
+          //   'Content-Type': 'application/x-www-form-urlencoded'
+          // },
+          data: {
+            user_name: username.value,
+            password_hash: md5(pass.value)
+          }
         })
 
         if (data) {

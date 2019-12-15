@@ -11,6 +11,14 @@ module.exports = {
         '1/2': '50%',
         full: '100%'
       },
+      margin: {
+        xs: '20rem',
+        sm: '24rem'
+      },
+      minHeight: {
+        '24': '6rem',
+        '32': '8rem'
+      },
       minWidth: {
         '24': '6rem',
         '40': '10rem',
@@ -53,6 +61,8 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    borderWidth: ['responsive', 'last', 'first']
+  },
   plugins: [require('tailwindcss-transitions')()]
 }

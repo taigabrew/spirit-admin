@@ -39,5 +39,5 @@ strong {
 }
 
 .nuxt-link-exact-active {
-  @apply bg-pink-200;
+  @apply bg-indigo-100 text-indigo-800;
 }

@@ -96,13 +96,6 @@ export default {
   axios: {
     redirectError: {
       401: '/login'
-    },
-    proxy: true
-  },
-  proxy: {
-    '/api/': {
-      target: process.env.REST_API_URL,
-      pathRewrite: { '^/api/': '' }
     }
   },
   purgeCSS: {

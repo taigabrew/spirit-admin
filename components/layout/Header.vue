@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white">
     <div class="container mx-auto flex items-center relative px-8">
-      <NuxtLink to="/" class="focus-outline">
+      <NuxtLink to="/" class="focus-outline flex items-center bg-transparent">
         <figure class="w-6 h-6 md:mr-3 bg-indigo-600 rounded-sm" />
         <h1
           class="hidden md:block font-bold text-lg leading-none text-gray-700"
@@ -12,12 +12,12 @@
 
       <ul class="flex ml-4 sm:ml-8">
         <li>
-          <NuxtLink to="/person/" class="block c-btn rounded-none"
+          <NuxtLink to="/person/" class="block c-btn rounded-none py-4"
             >Обвиняемые</NuxtLink
           >
         </li>
         <li>
-          <NuxtLink to="/sessions/" class="block c-btn rounded-none"
+          <NuxtLink to="/sessions/" class="block c-btn rounded-none py-4"
             >Заседания</NuxtLink
           >
         </li>
@@ -25,7 +25,7 @@
 
       <button
         @click="logout"
-        class="absolute right-0 top-1/2 align-vertical flex items-center focus-outline"
+        class="absolute right-8 top-1/2 align-vertical flex items-center focus-outline"
       >
         <Icon name="icon-door-o" class="w-6 h-6 md:mr-2 text-gray-600" />
         <span class="hidden md:block">Выйти</span>
