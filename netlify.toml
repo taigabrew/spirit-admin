@@ -1,0 +1,7 @@
+[dev]
+   command = "yarn dev"
+
+[build]
+  Command = "yarn build --modern:client"
+  Functions = "lambda"
+  Publish = "dist"
