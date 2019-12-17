@@ -1,6 +1,0 @@
-[dev]
-   command = "yarn dev"
-
-[build]
-  Command = "yarn build --modern:client"
-  Publish = "dist"

@@ -23,7 +23,7 @@ const store = useAccusedStore()
 export async function fetchAccusedList($axios) {
   try {
     const { data } = await $axios.get(
-      `${process.env.REST_API_URL}/user/get_all_accuseds`
+      `${process.env.API_PATH}/user/get_all_accuseds`
     )
 
     const { result } = data
@@ -35,7 +35,7 @@ export async function fetchAccusedList($axios) {
 
 export async function createAccusedItem({ $axios, data }) {
   try {
-    await $axios.put(`${process.env.REST_API_URL}/admin/put_accused`, data)
+    await $axios.put(`${process.env.API_PATH}/admin/put_accused`, data)
 
     fetchAccusedList($axios)
   } catch (error) {
@@ -44,7 +44,7 @@ export async function createAccusedItem({ $axios, data }) {
 }
 export async function updateAccusedItem({ $axios, id, data }) {
   try {
-    await $axios.patch(`${process.env.REST_API_URL}/admin/update_accused`, data)
+    await $axios.patch(`${process.env.API_PATH}/admin/update_accused`, data)
     const session = store.findPerson.value(id)
 
     if (session) {
@@ -57,9 +57,7 @@ export async function updateAccusedItem({ $axios, id, data }) {
 }
 export async function deleteAccusedItem({ $axios, id }) {
   try {
-    await $axios.delete(
-      `${process.env.REST_API_URL}/admin/delete_accused?id=${id}`
-    )
+    await $axios.delete(`${process.env.API_PATH}/admin/delete_accused?id=${id}`)
 
     const session = store.findPerson.value(id)
 

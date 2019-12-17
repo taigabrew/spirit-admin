@@ -22,7 +22,7 @@ const store = useSessionsStore()
 
 export async function fetchSessions($axios) {
   const { data } = await $axios.get(
-    `${process.env.REST_API_URL}/user/get_all_sittings`
+    `${process.env.API_PATH}/user/get_all_sittings`
   )
 
   console.log({ data })
@@ -33,7 +33,7 @@ export async function fetchSessions($axios) {
 
 export async function createSession({ $axios, data }) {
   try {
-    await $axios.put(`${process.env.REST_API_URL}/admin/put_sitting`, data)
+    await $axios.put(`${process.env.API_PATH}/admin/put_sitting`, data)
 
     fetchSessions($axios)
   } catch (error) {
@@ -43,7 +43,7 @@ export async function createSession({ $axios, data }) {
 
 export async function updateSession({ $axios, id, data }) {
   try {
-    await $axios.patch(`${process.env.REST_API_URL}/admin/update_sitting`, {
+    await $axios.patch(`${process.env.API_PATH}/admin/update_sitting`, {
       id,
       ...data
     })
@@ -60,9 +60,7 @@ export async function updateSession({ $axios, id, data }) {
 
 export async function removeSession({ $axios, id }) {
   try {
-    await $axios.delete(
-      `${process.env.REST_API_URL}/admin/delete_sitting?id=${id}`
-    )
+    await $axios.delete(`${process.env.API_PATH}/admin/delete_sitting?id=${id}`)
 
     const session = store.getSession.value(id)
 

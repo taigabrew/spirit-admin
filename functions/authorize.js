@@ -1,9 +1,9 @@
 const fetch = require('node-fetch')
-const { REST_API_URL } = process.env
+const { API_PATH } = process.env
 
 // eslint-disable-next-line require-await
 exports.handler = async function(event, context, callback) {
-  return fetch(`${REST_API_URL}/authorization`, {
+  return fetch(`${API_PATH}/authorization`, {
     headers: {
       'content-type': 'application/json'
     },
