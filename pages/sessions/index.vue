@@ -11,6 +11,15 @@
           @submit.prevent="addSession"
           class="flex flex-col w-full p-8 md:px-10 md:pb-10 bg-white sm:shadow max-w-sm min-w-xs rounded"
         >
+          <SelectEditor
+            v-bind="{
+              id: 'add-session-accused',
+              label: 'Обвиняемый',
+              options: accusedOptions
+            }"
+            v-model.number="accusedId"
+            required
+          />
           <InputWrap
             v-bind="{
               id: 'add-session-datetime',
@@ -70,21 +79,31 @@ import { ref, computed } from '@vue/composition-api'
 // Components
 import InputWrap from '~/components/editors/InputWrap'
 import TextAreaEditor from '~/components/editors/TextAreaEditor'
+import SelectEditor from '~/components/editors/SelectEditor'
 import AwaitButton from '~/components/layout/AwaitButton'
 import SessionItem from '~/components/SessionItem'
 
 // State modules
 import { createSession, useSessionsStore } from '~/store/sessions'
+import { useAccusedStore } from '~/store/accused'
 
 export default {
-  components: { TextAreaEditor, InputWrap, AwaitButton, SessionItem },
+  components: {
+    TextAreaEditor,
+    SelectEditor,
+    InputWrap,
+    AwaitButton,
+    SessionItem
+  },
   setup(props, { root }) {
+    const accusedStore = useAccusedStore()
     const sessionsStore = useSessionsStore()
 
     const now = new Date()
     const minDate = format(now, 'yyyy-MM-dd') + 'T' + format(now, 'HH:mm')
 
     /** Refs */
+    const accusedId = ref(null)
     const dateTime = ref(minDate)
     const address = ref('')
     const status = ref('idle')
@@ -95,6 +114,9 @@ export default {
       loading: 'loading'
     }))
     const sessionsList = computed(() => sessionsStore.state.list)
+    const accusedOptions = computed(() => {
+      return accusedStore.state.list.map(x => ({ id: x.id, name: x.name }))
+    })
 
     /** Functions */
     const addSession = async function() {
@@ -103,6 +125,7 @@ export default {
       await createSession({
         $axios: root.$axios,
         data: {
+          accused_id: accusedId.value,
           date_and_time: new Date(dateTime.value).toISOString(),
           address: address.value
         }
@@ -112,9 +135,8 @@ export default {
       status.value = statuses.value.idle
     }
 
-    /** Watchers */
-    /** Do something */
     return {
+      accusedId,
       minDate,
 
       // Refs
@@ -125,6 +147,7 @@ export default {
       // Computed
       statuses,
       sessionsList,
+      accusedOptions,
 
       // Functions
       addSession

@@ -71,11 +71,7 @@ export default {
       try {
         const { data } = await root.$axios({
           method: 'post',
-          // url: `${process.env.REST_API_URL}/authorization`,
-          url: `/.netlify/functions/authorize`,
-          // мheaders: {
-          //   'Content-Type': 'application/x-www-form-urlencoded'
-          // },
+          url: `${process.env.REST_API_URL}/authorization`,
           data: {
             user_name: username.value,
             password_hash: md5(pass.value)

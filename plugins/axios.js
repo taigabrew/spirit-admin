@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
 
-// import { useAuthStore } from '~/store/auth'
+import { useAuthStore } from '~/store/auth'
 
 Vue.use(VueCompositionApi)
-// const authStore = useAuthStore()
+const authStore = useAuthStore()
 
-export default function({ $axios, store }) {
+export default function({ $axios }) {
   $axios.onRequest(config => {
-    // if (authStore.state.token) {
-    //   config.headers.common.Authorization = `Bearer ${authStore.state.token}`
-    // }
+    if (authStore.state.token) {
+      config.headers.common.Authorization = `Bearer ${authStore.state.token}`
+    }
     return config
   })
 }

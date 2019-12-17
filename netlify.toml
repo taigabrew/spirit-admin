@@ -3,5 +3,4 @@
 
 [build]
   Command = "yarn build --modern:client"
-  Functions = "functions"
   Publish = "dist"

@@ -25,19 +25,17 @@ export async function fetchSessions($axios) {
     `${process.env.REST_API_URL}/user/get_all_sittings`
   )
 
+  console.log({ data })
+
   const { result } = data
   store.state.list = result
 }
 
 export async function createSession({ $axios, data }) {
   try {
-    // await $axios.patch(`${process.env.REST_API_URL}/admin/put_sitting`, data)
-    await console.log({ data })
+    await $axios.put(`${process.env.REST_API_URL}/admin/put_sitting`, data)
 
-    store.state.list.push({
-      id: String(Number(store.getLastId.value) + 1),
-      ...data
-    })
+    fetchSessions($axios)
   } catch (error) {
     console.error(error)
   }
@@ -45,12 +43,10 @@ export async function createSession({ $axios, data }) {
 
 export async function updateSession({ $axios, id, data }) {
   try {
-    // await $axios.patch(`${process.env.REST_API_URL}/admin/update_sitting`, {
-    //   id,
-    //   ...data
-    // })
-    await console.log({ id, ...data })
-
+    await $axios.patch(`${process.env.REST_API_URL}/admin/update_sitting`, {
+      id,
+      ...data
+    })
     const session = store.getSession.value(id)
 
     if (session) {
@@ -64,11 +60,9 @@ export async function updateSession({ $axios, id, data }) {
 
 export async function removeSession({ $axios, id }) {
   try {
-    // await $axios.delete(
-    //   `${process.env.REST_API_URL}/admin/delete_sitting?id=${id}`
-    // )
-
-    await console.log({ id })
+    await $axios.delete(
+      `${process.env.REST_API_URL}/admin/delete_sitting?id=${id}`
+    )
 
     const session = store.getSession.value(id)
 

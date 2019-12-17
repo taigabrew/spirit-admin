@@ -9,8 +9,7 @@ const token = localStorage.token || null
 export const useAuthStore = createStore(
   'auth',
   () => ({
-    // isAuthorized: Boolean(token),
-    isAuthorized: true,
+    isAuthorized: Boolean(token),
     token
   }),
   {}

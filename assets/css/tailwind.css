@@ -3,5 +3,6 @@
 @import './inputs.css';
 @import './buttons.css';
 @import './utils.css';
+@import './loading-animation.css';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';

@@ -20,31 +20,26 @@
           <TextAreaEditor
             id="add-accused-about"
             v-model="about"
-            required
             label="Об обвиняемом"
           />
           <TextEditor
             id="add-accused-articles"
             v-model="articles"
-            required
             label="Статьи обвинения"
           />
           <TextAreaEditor
             id="add-accused-essence-of-the-charge"
             v-model="essenceOfTheCharge"
-            required
             label="Суть обвинения"
           />
           <TextAreaEditor
             id="add-accused-support-address"
             v-model="supportAddress"
-            required
             label="Адрес для поддержки"
           />
           <TextEditor
             id="add-accused-bank-account"
             v-model="bankAccount"
-            required
             label="Номер банковского счета для поддержки родных"
           />
           <AwaitButton
@@ -97,12 +92,12 @@ export default {
     const accusedStore = useAccusedStore()
 
     /** Refs */
-    const name = ref('')
-    const about = ref('')
-    const articles = ref('')
-    const essenceOfTheCharge = ref('')
-    const supportAddress = ref('')
-    const bankAccount = ref('')
+    const name = ref('Ясав Иникпуп')
+    const about = ref('lorem')
+    const articles = ref('212.1')
+    const essenceOfTheCharge = ref('foo bar baz')
+    const supportAddress = ref('197.168.1.1:8080')
+    const bankAccount = ref('42')
     const status = ref('idle')
 
     /** Computed */

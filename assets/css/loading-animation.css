@@ -1,0 +1,26 @@
+.c-loading-icon-spoiler,
+.c-loading-icon-wrap {
+  @apply transition-cheap transition-250 transition-out-sine;
+}
+
+.c-loading-icon-spoiler {
+  .is-loading & {
+    @apply opacity-0;
+  }
+}
+
+.c-loading-icon {
+  animation: spin 1s theme('transitionTimingFunction.out-sine') infinite;
+}
+
+.c-loading-icon-wrap {
+  @apply absolute top-1/2 left-1/2;
+
+  transform: translate(-50%, -50%) scale(0.01);
+  opacity: 0.01;
+
+  .is-loading & {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
