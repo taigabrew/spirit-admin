@@ -71,7 +71,7 @@ export default {
       try {
         const { data } = await root.$axios({
           method: 'post',
-          url: `${process.env.API_PATH}/authorization`,
+          url: `${process.env.rest_api_path}/authorization`,
           data: {
             user_name: username.value,
             password_hash: md5(pass.value)

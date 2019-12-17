@@ -59,6 +59,9 @@ export default {
   router: {
     middleware: 'check-auth'
   },
+  env: {
+    rest_api_path: process.env.API_PATH || 'http://45.142.213.73:5002/api'
+  },
   /*
    ** Nuxt.js dev-modules
    */
@@ -96,7 +99,8 @@ export default {
   axios: {
     redirectError: {
       401: '/login'
-    }
+    },
+    baseURL: process.env.rest_api_path
   },
   purgeCSS: {
     whitelist: ['nuxt-link-exact-active'],
