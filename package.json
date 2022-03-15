@@ -21,7 +21,7 @@
     "browserslist": "^4.8.2",
     "date-fns": "^2.8.1",
     "js-md5": "^0.7.3",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "node-fetch": "^2.6.1",
     "nuxt": "^2.0.0",
     "nuxt-compress": "^1.0.2",
